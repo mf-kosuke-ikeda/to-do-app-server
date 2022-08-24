@@ -8,11 +8,11 @@ import { UsersController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { TaskModule } from './task/task.module';
 import { CommentModule } from './comment/comment.module';
-import {PrismaService} from './prisma.service'
+import { PrismaService } from './prisma.service'
 
 @Module({
   imports: [UserModule, TaskModule, CommentModule],
   controllers: [AppController, UsersController],
   providers: [AppService, UsersService, CommentService, TaskService, PrismaService],
 })
-export class AppModule {}
+export class AppModule { }
