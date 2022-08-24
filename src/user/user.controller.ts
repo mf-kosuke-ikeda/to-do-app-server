@@ -4,7 +4,6 @@ import {
     Param,
     Post,
     Body,
-    Head,
     Headers,
 } from '@nestjs/common';
 import { UsersService } from './user.service';
@@ -19,7 +18,7 @@ export class UsersController {
     @Get(':id')
     async findUserById(
         @Param('id') id: string,
-        @Headers('user-password') password : string
+        @Headers('User-Password') password : string
     ): Promise<User> {
         return this.usersService.loadUserByCredential(id, password);
     }
