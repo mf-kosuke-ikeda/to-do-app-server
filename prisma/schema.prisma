@@ -14,16 +14,21 @@ model User {
   id    String     @id
   password String
   name  String?
+  tasks Task[]
 }
 
 model Task {
-  id    String     @id @default(dbgenerated("uuid_generate_v4()"))
-  user_id String
+  id    String     @id @default(dbgenerated("gen_random_uuid()"))
+  user_id String  
+  User User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  completed Boolean
   title  String?
+  comments Comment[]
 }
 
 model Comment {
-  id    String     @id @default(dbgenerated("uuid_generate_v4()"))
-  task_id String 
+  id    String     @id @default(dbgenerated("gen_random_uuid()"))
+  task_id String
+  Task Task @relation(fields: [task_id], references: [id], onDelete: Cascade) 
   content  String?
 }
